@@ -17,6 +17,6 @@
 3.Crea un archivo de nombre .env, copia el contenido del archivo .env.example aquí encontraras una variable de entorno, en ella necesitas agregar el Api Token que nos otorga la aplicación Todoist (necesitas tener una cuenta previamente o crear una).
   https://app.todoist.com/app/settings/integrations/developer
 
-4.	Ejecutar el proyecto de forma local utilizando el siguiente comando:
+4.Ejecutar el proyecto de forma local utilizando el siguiente comando:
   $npm run dev
 ```
