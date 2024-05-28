@@ -7,7 +7,7 @@
       <div class="ctn-task-finder">
         <input
           type="text"
-          v-model="searchQuery"
+          v-model="searchTask"
           placeholder="Escribe para empezar a buscar tareas..."
         />
         <button class="btn-confirm" @click="showModal = true">
@@ -59,7 +59,7 @@ export default {
       showEditModal: false,
       taskToEdit: { id: null, content: "", description: "" },
       tasks: [],
-      searchQuery: "",
+      searchTask: "",
     };
   },
 
@@ -90,9 +90,7 @@ export default {
     async handleTaskCompleted(id) {
       try {
         await todolistService.closeTask(id);
-        // Obtener la lista actualizada de tareas
-        const updatedTasks = await todolistService.getTasks(); // Corregido el nombre de la función
-
+        const updatedTasks = await todolistService.getTasks();
         // Actualizar el estado local con las tareas actualizadas
         this.tasks = updatedTasks;
       } catch (error) {
@@ -103,7 +101,7 @@ export default {
     async handleTaskDelete(id) {
       try {
         await todolistService.deleteTask(id);
-        const updatedTasks = await todolistService.getTasks(); // Corregido el nombre de la función
+        const updatedTasks = await todolistService.getTasks();
         // Actualizar el estado local con las tareas actualizadas
         this.tasks = updatedTasks;
       } catch (error) {
@@ -111,10 +109,14 @@ export default {
       }
     },
   },
+
+  // computed se encarga de computar o definir valores derivados de manera reactiva
   computed: {
     filterTasks() {
-      return this.tasks.filter((task) =>
-        task.content.toLowerCase().includes(this.searchQuery.toLowerCase())
+      return this.tasks.filter(
+        (task) =>
+          task.content.toLowerCase().includes(this.searchTask.toLowerCase()) ||
+          task.description.toLowerCase().includes(this.searchTask.toLowerCase())
       );
     },
   },

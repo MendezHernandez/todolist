@@ -52,23 +52,17 @@ export default {
 
   async deleteTask(id) {
     try {
-      // Mostrar una confirmación al usuario
       const userConfirmed = confirm(
         "¿Estás seguro de que deseas eliminar esta tarea?"
       );
 
       if (userConfirmed) {
-        // Eliminar la tarea
         await api.deleteTask(id);
         alert("Tarea eliminada correctamente");
-      } else {
-        // El usuario canceló la eliminación
-        console.log("Eliminación cancelada por el usuario");
       }
     } catch (error) {
       console.error("Error al eliminar la tarea", error);
-      // Mostrar un mensaje de error al usuario si es necesario
-      // this.showNotification("Error al eliminar la tarea", "error");
+      throw error;
     }
   },
 };
