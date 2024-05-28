@@ -35,6 +35,10 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
+  layouts: {
+    error: "~/layouts/error.vue",
+  },
+
   env: {
     API_TOKEN: process.env.API_TOKEN,
   },
