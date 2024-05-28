@@ -137,8 +137,8 @@ export default {
   gap: 10px;
   width: 50%;
   background-color: var(--primary-color);
-  padding: 20px;
-  border-radius: 20px;
+  padding: 2rem;
+  border-radius: 2rem;
   box-shadow: 0.5rem 0.5rem 5px gray;
 }
 
@@ -172,17 +172,17 @@ export default {
 
 @media (max-width: 900px) {
   .ctn-tasks {
-    width: 70%;
+    width: calc(70% - 4rem);
   }
 }
 
 @media (max-width: 500px) {
   .ctn-tasks {
-    width: 90%;
+    width: calc(90% - 4rem);
   }
 
   .ctn-task-finder {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }
 </style>
