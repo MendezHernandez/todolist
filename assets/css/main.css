@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  color: var(--black);
+}
+
+:root {
+  --background: #ebeff2;
+  --primary-color: #6d9eeb;
+  --secondary-color: #a378a7;
+  --tertiary-color: #79b87e;
+  --modal-background: rgba(128, 128, 128, 0.6);
+  --white: rgb(249, 249, 249);
+  --black: rgb(77, 77, 77);
+  --gray: rgb(197, 197, 197);
+  --dark-secondary-color: #7b5d84;
+  --dark-tertiary-color: #5b8f5f;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-top: 5px;
+}
+
+h1 {
+  color: var(--white);
+  background-color: #456495;
+  padding: 1rem;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  padding: 1rem;
+  color: var(--white);
+  transition: 0.2s ease-in-out;
+}
+
+.btn-confirm {
+  background-color: var(--secondary-color);
+}
+
+.btn-confirm:hover {
+  background-color: var(--dark-secondary-color);
+}
+
+.btn-cancel {
+  background-color: var(--background);
+  color: var(--secondary-color);
+}
+
+.btn-cancel:hover {
+  background-color: var(--gray);
+}
