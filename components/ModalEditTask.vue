@@ -9,9 +9,6 @@
         required
       />
       <textarea
-        name=""
-        id=""
-        cols="30"
         rows="10"
         placeholder="Descripción"
         v-model="taskDescription"
@@ -45,12 +42,14 @@ export default {
       type: String,
     },
   },
+
   data() {
     return {
       taskContent: this.initialTaskContent,
       taskDescription: this.initialTaskDescription,
     };
   },
+
   // watch se encarge de revisar si las props initialTaskContent y initialTaskDescription cambian, si es asi, actualiza las variables de estados taskContent y taskDescription
   watch: {
     initialTaskContent(newVal) {
@@ -60,6 +59,7 @@ export default {
       this.taskDescription = newVal;
     },
   },
+
   methods: {
     close() {
       this.$emit("close");
@@ -72,8 +72,6 @@ export default {
             this.taskContent,
             this.taskDescription
           );
-
-          this.$emit("task-updated");
 
           // Limpiamos los inputs
           this.taskContent = "";

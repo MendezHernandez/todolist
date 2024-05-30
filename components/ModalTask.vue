@@ -10,12 +10,9 @@
         required
       />
       <textarea
-        name=""
-        id=""
-        cols="30"
+        v-model="newTaskDescription"
         rows="10"
         placeholder="Descripción"
-        v-model="newTaskDescription"
       ></textarea>
 
       <!-- botones de acción -->
@@ -53,8 +50,7 @@ export default {
           const newTask = {
             content: this.newTaskContent,
             description: this.newTaskDescription,
-            due_string: "tomorrow at 12:00", // ejemplo de fecha
-            due_lang: "en",
+            due_string: "tomorrow at 12:00",
           };
           await todolistService.addTask(newTask);
 
