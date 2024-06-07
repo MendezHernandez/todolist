@@ -47,6 +47,7 @@ export default {
     async addNewTask() {
       if (this.newTaskContent) {
         try {
+          this.$parent.showSpiner = true;
           const newTask = {
             content: this.newTaskContent,
             description: this.newTaskDescription,
@@ -62,6 +63,7 @@ export default {
           this.newTaskContent = "";
           this.newTaskDescription = "";
           this.close();
+          this.$parent.showSpiner = false;
         } catch (error) {
           console.error("Error al agregar la tarea:", error);
         }

@@ -17,7 +17,8 @@
 
       <!-- Lista de tareas -->
       <div class="table-tasks">
-        <NoTasks v-if="filterTasks.length === 0" />
+        <NoTasks v-if="filterTasks.length === 0 && showSpiner === false" />
+        <div v-else-if="showSpiner === true"></div>
         <CardTask
           v-else
           v-for="task in filterTasks"
@@ -39,6 +40,7 @@
       :isVisible="showEditModal"
       @close="showEditModal = false"
     />
+    <Loader :loading="showSpiner" />
   </div>
 </template>
 
@@ -57,6 +59,7 @@ export default {
     return {
       showModal: false,
       showEditModal: false,
+      showSpiner: false,
       taskToEdit: { id: null, content: "", description: "" },
       tasks: [],
       searchTask: "",
@@ -72,7 +75,9 @@ export default {
   methods: {
     async fetchTasks() {
       try {
+        this.showSpiner = true;
         this.tasks = await todolistService.getTasks();
+        this.showSpiner = false;
       } catch (error) {
         console.log("Error al obtener las tareas", error);
       }
@@ -89,10 +94,12 @@ export default {
 
     async handleTaskCompleted(id) {
       try {
+        this.showSpiner = true;
         await todolistService.closeTask(id);
         const updatedTasks = await todolistService.getTasks();
         // Actualizar el estado local con las tareas actualizadas
         this.tasks = updatedTasks;
+        this.showSpiner = false;
       } catch (error) {
         console.error("Error al completar la tarea", error);
       }
@@ -100,10 +107,12 @@ export default {
 
     async handleTaskDelete(id) {
       try {
+        this.showSpiner = true;
         await todolistService.deleteTask(id);
         const updatedTasks = await todolistService.getTasks();
         // Actualizar el estado local con las tareas actualizadas
         this.tasks = updatedTasks;
+        this.showSpiner = false;
       } catch (error) {
         console.error("Error al completar la tarea", error);
       }

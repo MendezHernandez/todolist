@@ -67,6 +67,7 @@ export default {
     async editTask() {
       if (this.taskContent.trim()) {
         try {
+          this.$parent.showSpiner = true;
           await todolistService.updateTask(
             this.taskId,
             this.taskContent,
@@ -82,6 +83,7 @@ export default {
           this.$parent.tasks = updatedTasks;
 
           this.close();
+          this.$parent.showSpiner = false;
         } catch (error) {
           console.error("Error al actualizar la tarea:", error);
         }
